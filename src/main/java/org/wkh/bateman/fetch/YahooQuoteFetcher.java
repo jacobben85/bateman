@@ -14,13 +14,13 @@ public class YahooQuoteFetcher extends QuoteFetcher {
     }
 
     public BigDecimal fetchBidAskSpread(String symbol) throws Exception {
-        String url = "http://download.finance.yahoo.com/d/quotes.csv?s=" + symbol + "&f=b2b3";
+        String url = "http://download.finance.yahoo.com/d/quotes.csv?s=" + symbol + "&f=sl1d1t1c1ohgv&e=.csv";
 
         String result = fetchURLasString(url).replaceAll("\r\n", "").replaceAll("\n", "");
 
         String[] parts = result.split(",");
 
-        return new BigDecimal(parts[0]).subtract(new BigDecimal(parts[1]));
+        return new BigDecimal(parts[1]).subtract(new BigDecimal(parts[5]));
     }
 
     @Override
